@@ -21,7 +21,10 @@ public class CustomerserviceApplication {
 		return args -> {
 			customerRepository.save(new Customer(null,"Anas","contact@anas.ma"));
 			customerRepository.save(new Customer(null,"Soufiane","contact@soufiane.ma"));
-			customerRepository.save(new Customer(null,"Someting","contact@someting.ma"));
+			customerRepository.save(new Customer(null,"Diae","contact@diae.ma"));
+			customerRepository.save(new Customer(null,"Taha","contact@taha.ma"));
+			customerRepository.save(new Customer(null,"Achraf","contact@achraf.ma"));
+			customerRepository.save(new Customer(null,"Zouhair","contact@zouhair.ma"));
 			customerRepository.findAll().forEach(System.out::println);
 		};
 	}

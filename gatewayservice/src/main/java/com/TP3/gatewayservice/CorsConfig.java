@@ -1,4 +1,4 @@
-package com.TP3.gatewayservice.cors;
+package com.TP3.gatewayservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

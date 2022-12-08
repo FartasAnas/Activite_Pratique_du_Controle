@@ -16,9 +16,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.hateoas.PagedModel;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SpringBootApplication
 @EnableFeignClients @Slf4j
@@ -33,17 +33,49 @@ public class BillingServiceApplication {
 							CustomerServiceClient customerServiceClient, InventoryServiceClient inventoryServiceClient){
 		return args -> {
 
-			Customer customer=customerServiceClient.findCustomerById(1L);
+			Customer customer1=customerServiceClient.findCustomerById(1L);
+			Customer customer2=customerServiceClient.findCustomerById(2L);
+			Customer customer3=customerServiceClient.findCustomerById(3L);
+			Customer customer4=customerServiceClient.findCustomerById(4L);
 
-			Bill bill=billRepository.save(new Bill(null,new Date(),null,customer.getId(),null));
+			Bill bill1=billRepository.save(new Bill(null,new Date(),null,customer1.getId(),null));
+			Bill bill2=billRepository.save(new Bill(null,new Date(),null,customer2.getId(),null));
+			Bill bill3=billRepository.save(new Bill(null,new Date(),null,customer3.getId(),null));
+			Bill bill4=billRepository.save(new Bill(null,new Date(),null,customer4.getId(),null));
 			PagedModel<Product> productPagedModel=inventoryServiceClient.findAll();
+			AtomicInteger i= new AtomicInteger();
 			productPagedModel.forEach(product -> {
-				ProductItem productItem=new ProductItem();
-				productItem.setPrice(product.getPrice());
-				productItem.setQuantity(1+new Random().nextInt(100));
-				productItem.setProductID(product.getId());
-				productItem.setBill(bill);
-				productItemRepository.save(productItem);
+
+				if(i.get() <=3) {
+					ProductItem productItem = new ProductItem();
+					productItem.setPrice(product.getPrice());
+					productItem.setQuantity(1 + new Random().nextInt(100));
+					productItem.setProductID(product.getId());
+					productItem.setBill(bill1);
+					productItemRepository.save(productItem);
+				} else if (i.get() >3 && i.get() <=6) {
+					ProductItem productItem = new ProductItem();
+					productItem.setPrice(product.getPrice());
+					productItem.setQuantity(1 + new Random().nextInt(100));
+					productItem.setProductID(product.getId());
+					productItem.setBill(bill2);
+					productItemRepository.save(productItem);
+				}else if (i.get() >6 && i.get() <=9) {
+					ProductItem productItem = new ProductItem();
+					productItem.setPrice(product.getPrice());
+					productItem.setQuantity(1 + new Random().nextInt(100));
+					productItem.setProductID(product.getId());
+					productItem.setBill(bill3);
+					productItemRepository.save(productItem);
+				}else {
+					ProductItem productItem = new ProductItem();
+					productItem.setPrice(product.getPrice());
+					productItem.setQuantity(1 + new Random().nextInt(100));
+					productItem.setProductID(product.getId());
+					productItem.setBill(bill4);
+					productItemRepository.save(productItem);
+				}
+				i.set(i.get() + 1);
 			});
 		};
 	};
