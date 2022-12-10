@@ -40,4 +40,10 @@ Anas Fartas Activité Pratique du Contrôle 5IIRG3-Centre
 ![q8s10](https://user-images.githubusercontent.com/80294911/206853807-b7ee0b9f-6cdf-435d-a350-38d2f2230e3e.png)
 ## Demande de refresh token
 ![q8s11](https://user-images.githubusercontent.com/80294911/206854038-8ccc79ab-7800-44f4-ae29-5efd9439ff8e.png)
-
+# Question 9: Sécurisation du frontend Angular avec KeyCloak
+## Login Page
+![q9s1](https://user-images.githubusercontent.com/80294911/206859512-953e8ccd-5a89-4464-8741-58ddcdcb7f68.png)
+## Normal User Interface
+![q9s2](https://user-images.githubusercontent.com/80294911/206859527-789c9eb1-01f5-44a2-bf7c-f7c605ce90c6.png)
+## Manager Interface
+![q9s3](https://user-images.githubusercontent.com/80294911/206859547-39a59cf3-3338-4bd9-b5bf-bec192cd97bc.png)
